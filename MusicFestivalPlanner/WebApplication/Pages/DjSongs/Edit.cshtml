@@ -1,0 +1,42 @@
+@page
+@model WebApplication.Pages.DjSongs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DjSong</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DjSong.DjSongId" />
+            <div class="form-group">
+                <label asp-for="DjSong.DjId" class="control-label"></label>
+                <select asp-for="DjSong.DjId" class="form-control" asp-items="Model.DJSelectList"></select>
+                <span asp-validation-for="DjSong.DjId" class="text-danger"></span>
+                 <a asp-page="/Djs/Create" target="_blank" asp-route-creatingDj="true" value="Add New Dj" >Add New Dj</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="DjSong.SongId" class="control-label"></label>
+                <select asp-for="DjSong.SongId" class="form-control" asp-items="Model.SongSelectList"></select>
+                  <a asp-page="/Songs/Create" target="_blank" asp-route-creatingSong="true" value="Add New Song" >Add New Song</a>
+                <span asp-validation-for="DjSong.SongId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

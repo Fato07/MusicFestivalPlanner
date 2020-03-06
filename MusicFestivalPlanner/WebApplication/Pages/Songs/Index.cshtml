@@ -1,0 +1,61 @@
+@page
+@model WebApplication.Pages.Songs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+
+<form class="form-inline" method="get">
+    <input asp-for="Search" value="@Model.Search" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+       
+    <input type="submit" value="Search" class="btn btn-outline-success my-2 my-smz-0"/>
+    <input type="submit" value="Reset" name="ToDoActionReset" class="btn btn-outline-danger my-2 my-sm-0"
+           @(string.IsNullOrWhiteSpace(Model.Search) ? "disabled=\"disabled\"" : "")/>
+    </form>
+
+<div class="padding-on-top-20">
+        @if (!string.IsNullOrWhiteSpace(Model.Search))
+        {
+            <p>Search is active. Search term: @Model.Search</p>
+        }
+        <p>Records: @Model.Songs.Count</p>
+        </div>
+
+<div class="card-deck">
+    @foreach (var item in Model.Songs)
+    {
+        <div class="carow">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @Html.DisplayFor(modelItem => item.Song.SongName)
+                    </h5>
+                
+                    <p class="card-text">Genre: @Html.DisplayFor(modelItem => item.Song.Genre.GenreName)</p>
+                    <p class="card-text">Song Duration: @Html.DisplayFor(modelItem => item.Song.Duration)</p>
+                    <p class="card-text">Performers: @Html.DisplayFor(modelItem => item.Song.PerformerSongs.Count)</p>
+                
+                    <a asp-page="/Performers/Index" class="card-text">
+                        <small class="text-muted">Click Here To See All Performers</small>
+                    </a>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                
+                    <a asp-page="./Edit" asp-route-id="@item.Song.SongId">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.Song.SongId">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Song.SongId">Delete</a>
+                
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

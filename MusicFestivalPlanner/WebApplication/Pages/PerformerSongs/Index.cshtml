@@ -1,0 +1,49 @@
+@page
+@model WebApplication.Pages.PerformerSongs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PerformerSong[0].Song)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PerformerSong[0].Performer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PerformerSong[0].Role)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    <tbody>
+    @foreach (var item in Model.PerformerSong)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Song.SongName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Performer.PerformerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.RoleName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PerformerSongId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PerformerSongId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PerformerSongId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

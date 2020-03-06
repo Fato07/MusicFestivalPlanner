@@ -1,0 +1,17 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+   
+    <form method="post">
+        <div class="form-group">
+            <input type="submit" value="See Festival overView" class="btn btn-primary" asp-page-handler="redirectToOverView" />
+        </div>
+    </form>
+    
+    
+</div>

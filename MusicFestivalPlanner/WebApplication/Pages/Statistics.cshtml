@@ -1,0 +1,34 @@
+@page
+@model WebApplication.Pages.StatisticsModel
+
+@{
+    ViewData["Title"] = "Statistics";
+}
+
+<h1>Statistics OverView</h1>
+<table class="table table-hover">
+  <tr>
+    <th scope="row">Performers</th>
+    <td>@Model.PerformerCount</td>
+  </tr>
+  
+  <tr>
+    <th scope="row">Djs</th>
+    <td colspan="2">@Model.DjCount</td>
+  </tr>
+  
+  <tr>
+    <th scope="row">Songs</th>
+    <td colspan="2">@Model.SongsCount</td>
+  </tr>
+  
+  <tr>
+    <th scope="row">Genre</th>
+    <td colspan="2">@Model.GenreCount</td>
+  </tr>
+  
+  <tr>
+    <th scope="row">Roles</th>
+    <td colspan="2">@Model.RoleCount</td>
+  </tr>
+</table>

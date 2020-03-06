@@ -1,0 +1,54 @@
+@page
+@model WebApplication.Pages.OverViewModel
+
+@{
+    ViewData["Title"] = "OverView";
+}
+
+
+<div>
+    <h1>Festival overView</h1>
+</div>
+
+<div class="card-deck">
+    <div>
+        <form method="post">
+            <a asp-page="./DjSongs/Create">Go to Plan DjSet</a>
+        </form>
+    </div>
+    
+    <div style="padding-left: 30px">
+        <form method="post">
+            <a asp-page="./PerformerSongs/Create">Go to Plan Performers</a>
+        </form>
+    </div>
+</div>
+
+<div>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Performers</h5>
+                <p class="card-text">Total Performers: @Model.PerformerCount</p>
+                 <a asp-page="./Performers/Index" class="card-text"><small class="text-muted">Click Here To See All Performers</small></a>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Dj's</h5>
+                <p class="card-text">Total number of DJs Performing: @Model.DjCount</p>
+                 <a asp-page="./Djs/Index" class="card-text"><small class="text-muted">Click Here To See All Dj's</small></a>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Songs</h5>
+                <p class="card-text">Total Songs to be Played: @Model.SongsCount</p>
+                <a asp-page="./Songs/Index" class="card-text"><small class="text-muted">Click Here To See All Songs</small></a>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+</div>
